@@ -71,4 +71,14 @@ class ApplicationController < ActionController::Base
     piratebooty = Bookmark.where({ :venue_id => title })
     render({ :plain =>  piratebooty.to_json })
   end
+
+  def nawbookmark
+    destroy=params.fetch(:bookmarkid)
+    plank=Bookmark.where({:id=>destroy}).at(0)
+    plank.destroy
+    render({:plain => "yummy but deadly"})
+  end  
+
+  
+
 end
