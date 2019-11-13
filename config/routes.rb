@@ -32,6 +32,9 @@ Rails.application.routes.draw do
   
   match("/venues/:venueid/specialties", { :controller => "application", :action => "wottoeat", :via => "get" })
   
+  match("venues/:venueid/fans", { :controller => "application", :action => "whoswho", :via => "get" })
+  
+  
   
   
   # ====================================================
