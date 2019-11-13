@@ -5,8 +5,15 @@ class ApplicationController < ActionController::Base
   end
 
   def disheshuh
-    biglist = Dish.all
-    render({ :plain =>  biglist.to_json })
+
+    if params[:cuisine_id] == nil
+      biglist = Dish.all
+      render({ :plain =>  biglist.to_json })
+    else
+      title = params.fetch(:cuisine_id, "None provided")
+      piratebooty = Dish.where({ :cuisine_id => title })
+      render({ :plain =>  piratebooty.to_json })
+    end  
   end  
 
   def disheswot
