@@ -26,6 +26,8 @@ Rails.application.routes.draw do
 
   match("/remove_bookmark/:bookmarkid", { :controller => "application", :action => "nawbookmark", :via => "get" })
   
+  match("/users/:userid/bookmarked_dishes", { :controller => "application", :action => "userdish", :via => "get" })
+  
   
   
   # ====================================================

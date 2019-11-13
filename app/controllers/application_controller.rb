@@ -79,6 +79,12 @@ class ApplicationController < ActionController::Base
     render({:plain => "yummy but deadly"})
   end  
 
-  
+  def userdish
+    babble=params.fetch(:userid)
+    pirateship=Bookmark.where({:user_id => babble}).pluck(:dish_id)
+    piratesauce = Dish.where({:id => pirateship})
+    render({:plain => piratesauce.to_json})
+  end
+
 
 end
