@@ -70,9 +70,18 @@ class ApplicationController < ActionController::Base
   end  
 
   def userbookmark
-    title = params.fetch(:userid)
-    piratebooty = Bookmark.where({ :user_id => title })
-    render({ :plain =>  piratebooty.to_json })
+
+    if params[:dish_id] == nil
+      title = params.fetch(:userid)
+      piratebooty = Bookmark.where({ :user_id => title })
+      render({ :plain =>  piratebooty.to_json })
+    else
+      title = params.fetch(:userid)
+      piratebooty = Bookmark.where({ :user_id => title })
+      sauce = params.fetch(:dish_id, "None provided")
+      pirategunship = piratebooty.where({ :dish_id => sauce })
+      render({ :plain =>  pirategunship.to_json })
+    end  
   end
   
   def dishbookmark
