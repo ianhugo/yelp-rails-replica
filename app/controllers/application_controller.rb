@@ -28,8 +28,16 @@ class ApplicationController < ActionController::Base
   end
 
   def venuewot
-    biglist = Venue.all
+
+    if params[:neighborhood_id] == nil
+      biglist = Venue.all
     render({ :plain =>  biglist.to_json })
+    else
+      title = params.fetch(:neighborhood_id, "None provided")
+      piratebooty = Venue.where({ :neighborhood_id => title })
+      render({ :plain =>  piratebooty.to_json })
+    end  
+
   end
 
   def userwot
