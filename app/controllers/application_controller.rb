@@ -43,15 +43,15 @@ class ApplicationController < ActionController::Base
   end
 
   def addbookmark
-  userid = params.fetch(:input_user_id)
-  dishid = params.fetch(:input_dish_id)
-  venueid = params.fetch(:input_venue_id)
-  blackbeard = Bookmark.new
-  blackbeard.user_id = userid
-  blackbeard.dish_id = dishid
-  blackbeard.venue_id = venueid
-  blackbeard.save
-  render({:plain => "yummy"})  
+    userid = params.fetch(:input_user_id)
+    dishid = params.fetch(:input_dish_id)
+    venueid = params.fetch(:input_venue_id)
+    blackbeard = Bookmark.new
+    blackbeard.user_id = userid
+    blackbeard.dish_id = dishid
+    blackbeard.venue_id = venueid
+    blackbeard.save
+    render({:plain => "yummy"})  
   end  
 
   def userbookmark
@@ -59,5 +59,16 @@ class ApplicationController < ActionController::Base
     piratebooty = Bookmark.where({ :user_id => title })
     render({ :plain =>  piratebooty.to_json })
   end
+  
+  def dishbookmark
+    title = params.fetch(:dishid)
+    piratebooty = Bookmark.where({ :dish_id => title })
+    render({ :plain =>  piratebooty.to_json })
+  end
 
+  def venuebookmark
+    title = params.fetch(:venueid)
+    piratebooty = Bookmark.where({ :venue_id => title })
+    render({ :plain =>  piratebooty.to_json })
+  end
 end

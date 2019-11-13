@@ -20,6 +20,11 @@ Rails.application.routes.draw do
   
   match("/users/:userid/bookmarks", { :controller => "application", :action => "userbookmark", :via => "get" })
   
+  match("/dishes/:dishid/bookmarks", { :controller => "application", :action => "dishbookmark", :via => "get" })
+  
+  match("/venues/:venueid/bookmarks", { :controller => "application", :action => "venuebookmark", :via => "get" })
+
+  
   
   # ====================================================
   devise_for :admin_users, ActiveAdmin::Devise.config
