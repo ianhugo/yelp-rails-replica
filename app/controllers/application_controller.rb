@@ -86,5 +86,11 @@ class ApplicationController < ActionController::Base
     render({:plain => piratesauce.to_json})
   end
 
+  def dishmaster
+    babble=params.fetch(:dishid)
+    pirateship=Bookmark.where({:dish_id => babble}).pluck(:venue_id)
+    piratesauce = Venue.where({:id => pirateship})
+    render({:plain => piratesauce.to_json})
+  end
 
 end

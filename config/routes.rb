@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   
   match("/users/:userid/bookmarked_dishes", { :controller => "application", :action => "userdish", :via => "get" })
   
+  match("/dishes/:dishid/experts", { :controller => "application", :action => "dishmaster", :via => "get" })
+  
   
   
   # ====================================================
