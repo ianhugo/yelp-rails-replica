@@ -16,8 +16,10 @@ Rails.application.routes.draw do
   
   match("/users/:userid", { :controller => "application", :action => "userhuh", :via => "get" })
 
+  match("/add_bookmark", { :controller => "application", :action => "addbookmark", :via => "get" })
   
-
+  match("/users/:userid/bookmarks", { :controller => "application", :action => "userbookmark", :via => "get" })
+  
   
   # ====================================================
   devise_for :admin_users, ActiveAdmin::Devise.config

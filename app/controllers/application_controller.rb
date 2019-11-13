@@ -42,5 +42,22 @@ class ApplicationController < ActionController::Base
     render({ :plain =>  piratebooty.to_json })
   end
 
+  def addbookmark
+  userid = params.fetch(:input_user_id)
+  dishid = params.fetch(:input_dish_id)
+  venueid = params.fetch(:input_venue_id)
+  blackbeard = Bookmark.new
+  blackbeard.user_id = userid
+  blackbeard.dish_id = dishid
+  blackbeard.venue_id = venueid
+  blackbeard.save
+  render({:plain => "yummy"})  
+  end  
+
+  def userbookmark
+    title = params.fetch(:userid)
+    piratebooty = Bookmark.where({ :user_id => title })
+    render({ :plain =>  piratebooty.to_json })
+  end
 
 end
